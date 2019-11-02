@@ -5,11 +5,17 @@
 .container .image-slider{
   display: flex;
   overflow: scroll;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* 吸附效果，强制在横轴上吸附 */
+  scroll-snap-type: x mandatory;
 }
 .container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* 吸附具体方式，图片的起始位置 */
+  scroll-snap-align: start;
 }
 .nav-section{
   position: absolute;
@@ -30,4 +36,7 @@
   text-decoration: none;
   border-radius: 50%;
   margin: 0 5px;
+}
+.slide-button-select{
+  background-color: red;
 }

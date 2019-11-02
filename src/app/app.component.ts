@@ -7,6 +7,7 @@ import { topMenu, imageSlider, ImageSliderComponent } from './components';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  username = ''
   // #引用名 如果是angular组件的话可以使用#引用名，引用
   // @ViewChild('appSliders',{static: true}) appSliders: ImageSliderComponent
   // 如果是angular组件的话，可以使用，ImageSliderComponent 对象名称
