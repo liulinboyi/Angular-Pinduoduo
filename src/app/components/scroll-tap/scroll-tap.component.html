@@ -1,0 +1,9 @@
+<ul>
+  <li 
+  *ngFor="let item of menus; let i = index;let f = first;let l= last;trackBy: item ? item.title : null"
+  ><a
+  href="#" 
+  [ngClass]="{'active': i === selectedIndex,'first': f,'last': l}"
+  (click)="handleSelection(i)"
+  >{{item.title}}</a></li>
+</ul>

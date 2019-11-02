@@ -1,0 +1,27 @@
+ul li{
+  display: inline-block;
+  margin: 0 5px;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+
+}
+a {
+  text-decoration: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.active {
+  color: red;
+}
+.first{
+  color: green;
+}
+.last{
+  color: pink;
+}
