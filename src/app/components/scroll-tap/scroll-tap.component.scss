@@ -1,5 +1,8 @@
 ul li{
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 5px;
 }
 ul {
@@ -8,7 +11,7 @@ ul {
   white-space: nowrap;
   flex-wrap: nowrap;
   overflow-x: scroll;
-
+  -webkit-overflow-scrolling: touch;
 }
 a {
   text-decoration: none;
@@ -24,4 +27,10 @@ a {
 }
 .last{
   color: pink;
+}
+.indicalor{
+  // background: red;
+  height: 2px;
+  width: 2rem;
+  margin-top: 2px;
 }

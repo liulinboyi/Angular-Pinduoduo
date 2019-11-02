@@ -1,9 +1,16 @@
-<ul>
+<ul [ngStyle]="{'background-color': backGroundColor}">
   <li 
   *ngFor="let item of menus; let i = index;let f = first;let l= last;trackBy: item ? item.title : null"
   ><a
   href="#" 
-  [ngClass]="{'active': i === selectedIndex,'first': f,'last': l}"
-  (click)="handleSelection(i)"
-  >{{item.title}}</a></li>
+  [ngStyle]="{'color': i === selectedIndex ? titleActiveColor : titleColor}"
+  [ngClass]="{'active': i === selectedIndex}"
+  (click)="handleSelection(i,$event)"
+  >{{item.title}}</a>
+  <span [ngStyle]="{'background-color': indicalorColor}" class="indicalor" *ngIf="i === selectedIndex else elseindicalor"></span>
+  <ng-template #elseindicalor>
+  </ng-template>
+  
+</li>
 </ul>
+<ng-content #scrollContent></ng-content>

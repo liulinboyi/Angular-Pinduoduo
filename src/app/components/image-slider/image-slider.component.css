@@ -1,0 +1,33 @@
+.container {
+  position: relative;
+  overflow: hidden;
+}
+.container .image-slider{
+  display: flex;
+  overflow: scroll;
+}
+.container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nav-section{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.5;
+  color: #fff;
+  background-color: #000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+.slide-button {
+  display: flex;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  text-decoration: none;
+  border-radius: 50%;
+  margin: 0 5px;
+}
