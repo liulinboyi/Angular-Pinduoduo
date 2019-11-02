@@ -50,7 +50,7 @@ export class ScrollTapComponent implements OnInit, OnChanges {
   }
 
   ngAfterContentChecked(): void {
-    console.log("组件内容脏值检测");
+    // console.log("组件内容脏值检测");
   }
   // 组件的视图初始化
   // 组件自身加上子组件，都初始化后调用
@@ -69,7 +69,7 @@ export class ScrollTapComponent implements OnInit, OnChanges {
   // 组件视图的脏值检测
   // 由系统完成的
   ngAfterViewChecked(): void {
-    console.log("组件视图的脏值检测");
+    // console.log("组件视图的脏值检测");
   }
   // 需要做一些清理工作，把settimeOut等清理掉
   ngOnDestroy(): void {

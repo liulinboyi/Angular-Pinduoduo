@@ -9,5 +9,6 @@ type="text"
 [value]="username" 
 (input)="username = $event.target.value"
 >
-<span>hello! {{username}}</span>
+<div (click)="hello()">hello! {{username}}</div>
+<div (click)="handleClick()">{{result}}</div>
 

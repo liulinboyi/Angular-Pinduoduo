@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { topMenu, imageSlider, ImageSliderComponent } from './components';
+import { topMenu, imageSlider, ImageSliderComponent } from './share/components';
 
 @Component({
   selector: 'app-root',
