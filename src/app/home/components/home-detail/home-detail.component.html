@@ -1,0 +1,13 @@
+<app-image-slider #appSliders [sliders]="sliders"></app-image-slider>
+<app-horizontal-grid [(username)]="username">
+  <!-- 指令没有模板，指令需要寄宿元素上，元素被称为宿主 -->
+<span appGridItem *ngFor="let item of channels">
+  <img [src]="item.icon" alt="" appGridItemImage [appGridItemImageWidth]="'3rem'">
+  <span appGridTitle [fontSize]="'1em'">{{item.title}}</span>
+</span>
+<!-- <div appGridItem class="special"> -->
+<!-- <div appGridItem >
+  <div appGridItemImage></div>
+  <span appGridTitle [fontSize]="'1em'">hello!</span>
+</div> -->
+</app-horizontal-grid>
