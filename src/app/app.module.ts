@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShareModule } from './share/share.module';
+import { HomeModule } from './home';
 
 @NgModule({
   // 自己的组件声明，让组件相互认识
@@ -18,7 +19,8 @@ import { ShareModule } from './share/share.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ShareModule
+    ShareModule,
+    HomeModule
   ],
   // 导出的，可以是模块，指令，服务
   exports: [

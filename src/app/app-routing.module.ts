@@ -5,7 +5,7 @@ import { HomeContainerComponent } from './home';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeContainerComponent}
+  { path: '', component: HomeContainerComponent}
   //  路由依次解析，上面匹配不到，匹配下面
   // 用户输不存在的路由，显示不存在
   // { path: '**', component: PageNotFoundComponent },
