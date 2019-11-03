@@ -4,11 +4,26 @@
 <!-- ngModel -->
 <!-- <input type="text" [(ngModel)]="username"> -->
 
-<input 
+<!-- <input 
 type="text" 
 [value]="username" 
 (input)="username = $event.target.value"
 >
 <div (click)="hello()">hello! {{username}}</div>
-<div (click)="handleClick()">{{result}}</div>
+<div (click)="handleClick()">{{result}}</div> -->
 
+
+<!-- select 选择标签span，样式类 .special, 指令 [appGridItem],可以同时写多个ng-content-->
+<!-- <ng-content select="div"></ng-content> -->
+<div class="container" 
+[ngStyle]="{
+'grid-template-rows': templateRows,
+'grid-template-columns': templateColumns}"
+(scroll)="handleScroll($event)"
+>
+<!-- 投影组件适合做容器，并且用得好，可以减少事件传递层数 -->
+    <ng-content select="[appGridItem]"></ng-content>
+</div>
+<div class="underline" *ngIf="scrollable">
+  <div class="highlight" [ngStyle]="{'margin': sliderMargin}"></div>
+</div>

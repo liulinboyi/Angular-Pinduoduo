@@ -1,3 +1,35 @@
-input {
-  
+// :host指向组件本身
+// :host {
+//   display: flex;
+//   overflow-x: auto;
+// }
+.container{
+  background-color: #fff;
+  padding: 5px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* 吸附效果，强制在横轴上吸附 */
+  scroll-snap-type: x mandatory;
+  display: grid;
+  place-content: stretch;
+  place-items: center;
+  grid-gap: 0.4rem;
+  grid-auto-flow: row;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.underline {
+  width: 20%;
+  height: 2px;
+  // background-color: lightgray;
+  margin: 0 auto;
+}
+.underline > .highlight {
+  width: 50%;
+  height: 2px;
+  padding: 0;
+  background-color: red;
 }
