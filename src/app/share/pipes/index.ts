@@ -1,0 +1,2 @@
+export *from './ago.pipe';
+

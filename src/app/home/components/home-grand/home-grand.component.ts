@@ -11,9 +11,17 @@ export class HomeGrandComponent implements OnInit {
   obj = { productId: 2, name: '手机', model: 's', type: '全面屏' };
   date;
   price;
+  data;
   ngOnInit() {
-    this.date = new Date();
-    this.price = 123.32;
+    // this.date = new Date();
+    this.date = this.minusDays(new Date(), 60);
+    this.price = 123.32333;
+    this.data = [1, 2, 3];
+  }
+  minusDays(date, days) {
+    const result = new Date(date);
+    result.setDate(result.getDate() - days);
+    return result;
   }
 
 }
