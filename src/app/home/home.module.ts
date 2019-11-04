@@ -13,6 +13,7 @@ import { HomeAuxComponent } from './components/home-aux/home-aux.component';
   imports: [
     ShareModule,
     HomeRoutingModule
-  ]
+  ],
+  providers: []
 })
 export class HomeModule { }
