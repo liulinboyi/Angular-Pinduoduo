@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, Injector } from '@angular/core';
+import { Component, OnInit, Injectable, Injector, InjectionToken } from '@angular/core';
 import { inject } from '@angular/core/testing';
 
 // 可注入类
@@ -38,8 +38,12 @@ export class HomeGrandComponent implements OnInit {
     this.date = this.minusDays(new Date(), 60);
     this.price = 123.32333;
     this.data = [1, 2, 3];
+    // 防止命名冲突，使用token
+    const token = new InjectionToken<string>('baseUrl');
     // angualr构造的对象池，实际上把所有对象都建立好了，已经new出来了。使用直接拿就好。
     // 默认是单例的，类默认情况下只有一份，也支持，每次都是一个新的实例
+    // angualr注入是分级别的，顶级（应用级）注入，模块（模块级）注入，组件级注入，分范围
+    // 注入器，也是一个树。
     const injecter = Injector.create({
       // 描述，如何创建
       providers: [
@@ -60,11 +64,16 @@ export class HomeGrandComponent implements OnInit {
           provide: PurchaseOrder,
           useClass: PurchaseOrder,
           deps: [Product]
+        }, {
+          provide: token,
+          useValue: 'http://localhost/'
         }
       ]
     });
     console.log(injecter.get(Product));
     console.log(injecter.get(PurchaseOrder));
+    console.log(injecter.get(token));
+
 
 
   }
