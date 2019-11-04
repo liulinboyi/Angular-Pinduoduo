@@ -2,7 +2,6 @@
   <li 
   *ngFor="let item of menus; let i = index;let f = first;let l= last;trackBy: item ? item.title : null"
   ><a
-  href="#" 
   [ngStyle]="{'color': i === selectedIndex ? titleActiveColor : titleColor}"
   [ngClass]="{'active': i === selectedIndex}"
   (click)="handleSelection(i,$event)"

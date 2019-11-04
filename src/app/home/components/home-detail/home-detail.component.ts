@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Channel, ImageSliderComponent, imageSlider, topMenu } from 'src/app/share/components';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home-detail',
@@ -7,8 +8,8 @@ import { Channel, ImageSliderComponent, imageSlider, topMenu } from 'src/app/sha
   styleUrls: ['./home-detail.component.scss']
 })
 export class HomeDetailComponent implements OnInit {
-
-  constructor() { }
+  slelctedTabLink = '';
+  constructor(private activeroute: ActivatedRoute) { }
 
   channels: Channel[] = [
     {
@@ -137,21 +138,13 @@ export class HomeDetailComponent implements OnInit {
     link: '',
     caption: ''
   }];
-  scrollBackGroundColor = 'rgba(0,0,0,0.1)';
-  colors = [
-    'rgba(0,0,0,0)',
-    'rgba(0,0,0,0.1)',
-    'rgba(0,0,0,0.2)',
-    'rgba(0,0,0,0.3)',
-    'rgba(0,0,0,0.4)',
-    'rgba(0,0,0,0.5)'
-  ];
-  handleTabSelected(curTab) {
-    console.log(curTab);
-    this.scrollBackGroundColor = this.colors[Math.floor(Math.random() * this.colors.length - 1)];
-  }
+
+
 
   ngOnInit() {
+    this.activeroute.paramMap.subscribe(params => {
+      this.slelctedTabLink = params.get('tabLink');
+    });
   }
 
 }
