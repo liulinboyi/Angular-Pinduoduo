@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { topMenu } from 'src/app/share/components';
 import { Router } from '@angular/router';
 import { HomeService } from '../../services';
@@ -7,7 +7,8 @@ import { token } from '../home-grand';
 @Component({
   selector: 'app-home-container',
   templateUrl: './home-container.component.html',
-  styleUrls: ['./home-container.component.scss']
+  styleUrls: ['./home-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeContainerComponent implements OnInit {
 
@@ -33,7 +34,11 @@ export class HomeContainerComponent implements OnInit {
   ngOnInit() {
     console.log(this.baseUrl);
 
-    this.menus = this.service.getTabs();
+    // this.menus = this.service.getTabs();
+    this.service.getTabs().subscribe(item => {
+      this.menus = item;
+    });
+
   }
 
 }

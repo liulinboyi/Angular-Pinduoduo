@@ -1,16 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Channel, ImageSliderComponent, imageSlider, topMenu } from 'src/app/share/components';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Channel, ImageSliderComponent, imageSlider } from 'src/app/share/components';
 import { ActivatedRoute } from '@angular/router';
 import { HomeService } from '../../services';
 
 @Component({
   selector: 'app-home-detail',
   templateUrl: './home-detail.component.html',
-  styleUrls: ['./home-detail.component.scss']
+  styleUrls: ['./home-detail.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeDetailComponent implements OnInit {
+  // 由于没有@Input() 的属性，所以路由变化被忽略掉。
+  // 解决 导入 private cd: ChangeDetectorRef，手动提醒angular
   slelctedTabLink = '';
-  constructor(private activeroute: ActivatedRoute, private service: HomeService) { }
+  constructor(
+    private activeroute: ActivatedRoute,
+    private service: HomeService,
+    private cd: ChangeDetectorRef) { }
 
   channels: Channel[] = [];
   username = '';
@@ -46,9 +52,13 @@ export class HomeDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    this.channels = this.service.getChannels();
+    this.service.getChannels().subscribe( item => {
+      this.channels = item;
+    } );
     this.activeroute.paramMap.subscribe(params => {
       this.slelctedTabLink = params.get('tabLink');
+      // 我这里发生变化了，请angular检查我。
+      this.cd.markForCheck();
     });
   }
 

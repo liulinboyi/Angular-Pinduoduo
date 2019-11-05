@@ -10,7 +10,8 @@ import {
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy } from '@angular/core';
+  OnDestroy,
+  ChangeDetectionStrategy } from '@angular/core';
 
 // tslint:disable-next-line:class-name
 export interface topMenu {
@@ -23,7 +24,10 @@ type addFunction = (x: number, y: number) => number;
 @Component({
   selector: 'app-scroll-tap',
   templateUrl: './scroll-tap.component.html',
-  styleUrls: ['./scroll-tap.component.scss']
+  styleUrls: ['./scroll-tap.component.scss'],
+  // 这样配置元数据，angular只看有@Input装饰器的属性，
+  // 如果变了启用脏值检测，只有这个分支的树脏值检测,不会整个树检测，否则不理。
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollTapComponent implements OnInit,
 OnChanges,

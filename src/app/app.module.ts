@@ -9,6 +9,7 @@ import { HomeModule } from './home';
 
 import localZh from '@angular/common/locales/zh-Hans';
 import { registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   // 自己的组件声明，让组件相互认识
   // 包含组件，指令，管道
@@ -22,6 +23,7 @@ import { registerLocaleData } from '@angular/common';
     AppRoutingModule,
     FormsModule,
     ShareModule,
+    HttpClientModule,
     HomeModule
   ],
   // 导出的，可以是模块，指令，服务
