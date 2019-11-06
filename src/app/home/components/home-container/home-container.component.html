@@ -1,6 +1,6 @@
 <!-- tabSelected 子组件抛出事件tabSelected，父组件执行这个自定义事件，（tabSelected）="父组件事件处理" -->
 <app-scroll-tap 
-[menus]="menus" 
+[menus]="menus$ | async" 
 [backGroundColor]="scrollBackGroundColor" 
 (tabSelected)="handleTabSelected($event)"
 >

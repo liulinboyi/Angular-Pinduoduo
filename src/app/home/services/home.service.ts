@@ -182,12 +182,15 @@ export class HomeService {
     return this.http
     .get<topMenu[]>(`${environment.baseUrl}/tab.json`, {
       // 查询参数
-      params: {}
+      params: {token: 'test'}
     });
   }
   getChannels() {
     return this.http
-    .get<Channel[]>(`${environment.baseUrl}/channels.json`);
+    .get<Channel[]>(`${environment.baseUrl}/channels.json`, {
+      // 查询参数
+      params: {token: 'test'}
+    });
   }
   // 将private http: HttpClient手动注入
   constructor(private http: HttpClient) { }

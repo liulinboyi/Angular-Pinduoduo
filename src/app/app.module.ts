@@ -5,11 +5,11 @@ import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ShareModule } from './share/share.module';
-import { HomeModule } from './home';
+import { HomeModule, ParamInterceptor, NotificationInterceptor } from './home';
 
 import localZh from '@angular/common/locales/zh-Hans';
 import { registerLocaleData } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   // 自己的组件声明，让组件相互认识
   // 包含组件，指令，管道
@@ -35,6 +35,16 @@ import { HttpClientModule } from '@angular/common/http';
     {
       provide: LOCALE_ID,
       useValue: 'zh-hans'
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      // HTTP_INTERCEPTORS 带有s一个令牌对应多个
+      useClass: ParamInterceptor,
+      multi: true
+    }, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: NotificationInterceptor,
+      multi: true
     }
   ],
   // 根模块，才有

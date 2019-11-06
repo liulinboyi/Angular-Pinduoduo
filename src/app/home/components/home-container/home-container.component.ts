@@ -3,6 +3,7 @@ import { topMenu } from 'src/app/share/components';
 import { Router } from '@angular/router';
 import { HomeService } from '../../services';
 import { token } from '../home-grand';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-container',
@@ -17,6 +18,7 @@ export class HomeContainerComponent implements OnInit {
     private service: HomeService,
     @Inject(token) private baseUrl: string) { }
   menus: topMenu[] = [];
+  menus$: Observable<topMenu[]>;
   scrollBackGroundColor = 'rgba(0,0,0,0.1)';
   colors = [
     'rgba(0,0,0,0)',
@@ -35,9 +37,7 @@ export class HomeContainerComponent implements OnInit {
     console.log(this.baseUrl);
 
     // this.menus = this.service.getTabs();
-    this.service.getTabs().subscribe(item => {
-      this.menus = item;
-    });
+    this.menus$ = this.service.getTabs();
 
   }
 

@@ -1,8 +1,9 @@
-<div *ngIf="slelctedTabLink === 'hot' else other">
+<div *ngIf="(slelctedTabLink$ | async) === 'hot' else other">
     <app-image-slider #appSliders [sliders]="sliders"></app-image-slider>
     <app-horizontal-grid [(username)]="username">
       <!-- 指令没有模板，指令需要寄宿元素上，元素被称为宿主 -->
-    <span appGridItem *ngFor="let item of channels">
+    <!-- <span appGridItem *ngFor="let item of channels"> -->
+    <span appGridItem *ngFor="let item of channels$ | async">
       <img [src]="item.icon" alt="" appGridItemImage [appGridItemImageWidth]="'3rem'">
       <span appGridTitle [fontSize]="'1em'">{{item.title}}</span>
     </span>
