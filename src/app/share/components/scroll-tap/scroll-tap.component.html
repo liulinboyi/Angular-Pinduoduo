@@ -6,7 +6,11 @@
   [ngClass]="{'active': i === selectedIndex}"
   (click)="handleSelection(i,$event)"
   >{{item.title}}</a>
-  <span [ngStyle]="{'background-color': indicalorColor}" class="indicalor" *ngIf="i === selectedIndex else elseindicalor"></span>
+  <span 
+  [ngStyle]="{'background-color': indicalorColor}" 
+  class="indicalor" 
+  *ngIf="item.link === selectedTabLink else elseindicalor"
+  ></span>
   <ng-template #elseindicalor>
   </ng-template>
   

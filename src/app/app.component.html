@@ -1,1 +1,3 @@
 <router-outlet></router-outlet>
+<!-- selectedIndex数据从路由来，路由是一个流 -->
+<app-footer [selectedIndex]="selectedIndex$ | async" (tabSelected)="handleTabSelected($event)"></app-footer>

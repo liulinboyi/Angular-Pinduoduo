@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ScrollTapComponent, ImageSliderComponent, HorizontalGridComponent, CountDownComponent } from './components';
+import { ScrollTapComponent, ImageSliderComponent, HorizontalGridComponent, CountDownComponent, FooterComponent } from './components';
 import { GridItemDirective, GridItemImageDirective, GridTitleDirective } from './directives';
 import { AgoPipe } from './pipes';
 
@@ -18,6 +18,7 @@ import { AgoPipe } from './pipes';
     GridItemImageDirective,
     GridTitleDirective,
     AgoPipe,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +35,7 @@ import { AgoPipe } from './pipes';
     GridItemImageDirective,
     GridTitleDirective,
     AgoPipe,
+    FooterComponent
   ]
 })
 export class ShareModule { }

@@ -5,6 +5,7 @@ import { HomeContainerComponent, HomeDetailComponent, HomeGrandComponent, HomeAu
 
 const routes: Routes = [
   {
+    // 路由
     path: 'home',
     component: HomeContainerComponent,
     children: [
@@ -14,6 +15,7 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
+      // 路由参数
       path: ':tabLink',
       component: HomeDetailComponent,
       children: [{

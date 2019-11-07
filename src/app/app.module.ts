@@ -10,6 +10,10 @@ import { HomeModule, ParamInterceptor, NotificationInterceptor } from './home';
 import localZh from '@angular/common/locales/zh-Hans';
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RecommendModule } from './recommend';
+import { CategoryModule } from './category';
+import { ChatModule } from './chat';
+import { MyModule } from './my';
 @NgModule({
   // 自己的组件声明，让组件相互认识
   // 包含组件，指令，管道
@@ -24,7 +28,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     FormsModule,
     ShareModule,
     HttpClientModule,
-    HomeModule
+    HomeModule,
+    RecommendModule,
+    CategoryModule,
+    ChatModule,
+    MyModule
   ],
   // 导出的，可以是模块，指令，服务
   exports: [

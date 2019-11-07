@@ -28,3 +28,10 @@ a {
 .special{
   background-color: red;
 }
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
+}

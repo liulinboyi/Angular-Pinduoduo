@@ -3,7 +3,9 @@
 [menus]="menus$ | async" 
 [backGroundColor]="scrollBackGroundColor" 
 (tabSelected)="handleTabSelected($event)"
+[selectedTabLink]="selectedTabLink$ | async"
 >
 <!-- <div>hello 嵌套投影</div> -->
 </app-scroll-tap>
+<div>111{{url$ | async}}</div>
 <router-outlet></router-outlet>

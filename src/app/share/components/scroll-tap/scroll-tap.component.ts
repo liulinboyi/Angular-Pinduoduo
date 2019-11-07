@@ -41,6 +41,7 @@ OnDestroy {
     console.log('构造函数，组件构造调用');
 
   }
+  @Input() selectedTabLink: string;
   @Input() menus;
   @Input() backGroundColor = '#FFF';
   @Input() titleActiveColor = 'red';
