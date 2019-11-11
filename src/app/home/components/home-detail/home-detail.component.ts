@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { Channel, ImageSliderComponent, imageSlider } from 'src/app/share/components';
 import { ActivatedRoute } from '@angular/router';
 import { HomeService } from '../../services';
-import { filter, map } from 'rxjs/operators';
-import { Observable, Subscription } from 'rxjs';
+import { filter, map, switchMap, tap, catchError } from 'rxjs/operators';
+import { Observable, Subscription, of } from 'rxjs';
+import { Ad, Product } from 'src/app/share/domain';
 
 
 @Component({
@@ -27,6 +28,9 @@ export class HomeDetailComponent implements OnInit, OnDestroy {
   channels: Channel[] = [];
   username = '';
   sub: Subscription;
+  ad$: Observable<Ad>;
+  products$: Observable<Product[]>;
+  show = false;
   // #引用名 如果是angular组件的话可以使用#引用名，引用
   // @ViewChild('appSliders',{static: true}) appSliders: ImageSliderComponent
   // 如果是angular组件的话，可以使用，ImageSliderComponent 对象名称
@@ -59,10 +63,63 @@ export class HomeDetailComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
+
+
+    this.slelctedTabLink$ = this.activeroute.paramMap.pipe(
+      filter(item => item.has('tabLink')),
+      map(item => item.get('tabLink')),
+      tap(e => {
+        console.log(e);
+      }),
+    );
+
+    this.slelctedTabLink$.subscribe(e => {
+      this.products$ = this.service.getProduct(e).pipe(
+        catchError(error => {
+          this.show = true;
+          this.cd.markForCheck();
+          throw of(error);
+         },
+         ), tap((item) => {
+          this.show = false;
+          this.cd.markForCheck();
+         }));
+
+      // 可观察对象，如果是请求api,那么多一次订阅，多一次请求
+      // 并且，{{ products$ | async | json }} 在模板中使用，调试，同样也是多一次请求
+      // this.products$.subscribe(item => {
+      //     console.log(item, 'this.products$');
+      //     this.show = false;
+      //     this.cd.markForCheck();
+      // });
+
+      this.ad$ = this.service.getAdByTab(e).pipe(filter(item => item.length > 0),
+      map(item => item[0]));
+
+    });
+
+
+
     // 这样直接
-    this.slelctedTabLink$ = this.activeroute.paramMap
-    .pipe(filter(item => item.has('tabLink')),
-    map(item => item.get('tabLink')));
+    // this.slelctedTabLink$ = this.activeroute.paramMap
+    // .pipe(filter(item => item.has('tabLink')),
+    // map(item => item.get('tabLink')));
+    // this.ad$ = this.slelctedTabLink$.pipe(
+    //   switchMap(tab => this.service.getAdByTab(tab)),
+    //   filter(ads => ads.length > 0),
+    //   map(ads => ads[0]),
+    // );
+    // this.ad$.subscribe(() => {
+    //   this.cd.markForCheck();
+    // });
+    // this.products$ = this.slelctedTabLink$.pipe(
+    //   switchMap(tab => this.service.getProduct(tab))
+    // );
+    // this.products$.subscribe( () => {
+    //   this.cd.markForCheck();
+    // });
+
+
     // this.activeroute.paramMap
     // .pipe(filter(item => item.has('tabLink')),
     // map(item => item.get('tabLink')))

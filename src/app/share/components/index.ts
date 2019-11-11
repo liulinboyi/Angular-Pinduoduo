@@ -8,3 +8,6 @@ export * from './image-slider';
 export * from './horizontal-grid';
 export * from './count-down';
 export * from './footer';
+export * from './product-card';
+export * from './vertical-grid';
+export * from './toast-info';

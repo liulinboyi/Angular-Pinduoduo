@@ -4,3 +4,10 @@
   align-items: stretch;
   flex: 1;
 }
+.main{
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  height: calc(100% - 3rem);
+}

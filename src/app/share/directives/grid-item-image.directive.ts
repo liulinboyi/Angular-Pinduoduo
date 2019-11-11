@@ -12,7 +12,7 @@ export class GridItemImageDirective {
   // 监听事件
   @HostListener('click', ['$event.target'])
   handleClick(e) {
-    console.log(e);
+    // console.log(e);
   }
   // 得到数组，操作数组的样式
 constructor(private elr: ElementRef, private rd2: Renderer2) {

@@ -1,26 +1,25 @@
-<div *ngIf="(slelctedTabLink$ | async) === 'hot' else other">
+<ng-container *ngIf="(slelctedTabLink$ | async) as tap">
+  <!-- (slelctedTabLink$ | async) as tap 将这个流 async pipe后当做一个常量，在里面可以使用 -->
+  <ng-container *ngIf="tap === 'hot'">
     <app-image-slider #appSliders [sliders]="sliders"></app-image-slider>
     <app-horizontal-grid [(username)]="username">
-      <!-- 指令没有模板，指令需要寄宿元素上，元素被称为宿主 -->
-    <!-- <span appGridItem *ngFor="let item of channels"> -->
     <span appGridItem *ngFor="let item of channels$ | async">
       <img [src]="item.icon" alt="" appGridItemImage [appGridItemImageWidth]="'3rem'">
       <span appGridTitle [fontSize]="'1em'">{{item.title}}</span>
     </span>
-    <!-- <div appGridItem class="special"> -->
-    <!-- <div appGridItem >
-      <div appGridItemImage></div>
-      <span appGridTitle [fontSize]="'1em'">hello!</span>
-    </div> -->
     </app-horizontal-grid>
-</div>
-<ng-template #other>
-  other {{slelctedTabLink}}
-</ng-template>
-<a [routerLink]="[ 'grand' ]" routerLinkActive="active" [queryParams]="{name: '张三'}">Link to grand</a>
-<a [routerLink]="[ {outlets: {second: 'aux'}} ]" [queryParams]="{name: '张三'}">Link to aux</a>
+  </ng-container>
+</ng-container>
 
-<!-- <a [routerLink]="[ 'grand' ]">Link to grand</a> -->
-<router-outlet></router-outlet>
-<router-outlet name="second"></router-outlet>
+<div class="ad-container" *ngIf="ad$ | async as ad">
+  <img class="ad-image" [src]="ad.imageUrl" alt="">
+</div>
+<app-vertical-grid [width]="'20rem'" [height]="'2rem'">
+  <!-- <div>hello</div>
+  <div>world</div> -->
+  <!-- {{ slelctedTabLink$ | async | json }}
+  {{ products$ | async | json }} -->
+    <app-product-card [product]="item" *ngFor="let item of products$ | async"></app-product-card>
+</app-vertical-grid>
+<app-toast-info *ngIf="show"></app-toast-info>
 

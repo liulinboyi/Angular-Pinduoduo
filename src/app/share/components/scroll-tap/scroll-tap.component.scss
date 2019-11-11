@@ -1,3 +1,8 @@
+:host {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
 ul li{
   display: flex;
   flex-direction: column;
@@ -12,6 +17,8 @@ ul {
   flex-wrap: nowrap;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
+  padding: 0;
+  margin: 0;
 }
 a {
   text-decoration: none;

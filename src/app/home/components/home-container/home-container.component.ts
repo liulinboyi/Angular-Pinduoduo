@@ -21,15 +21,15 @@ export class HomeContainerComponent implements OnInit {
     private service: HomeService,
     @Inject(token) private baseUrl: string) {
       // 这里不生效
-      router.events.pipe(
-        tap(e => console.log(e, 'home')),
-        filter(ev => ev instanceof NavigationEnd),
-        map((e: NavigationEnd) => {
-          const arr = e.url.split('/');
-          // console.log(arr);
-          return arr.length > 1 ? arr[1] : 'home';
-        }),
-      );
+      // router.events.pipe(
+      //   tap(e => console.log(e, 'home')),
+      //   filter(ev => ev instanceof NavigationEnd),
+      //   map((e: NavigationEnd) => {
+      //     const arr = e.url.split('/');
+      //     // console.log(arr);
+      //     return arr.length > 1 ? arr[1] : 'home';
+      //   }),
+      // );
      }
   menus: topMenu[] = [];
   menus$: Observable<topMenu[]>;
@@ -60,9 +60,10 @@ export class HomeContainerComponent implements OnInit {
       tap(e => console.log(e, 'home')),
       filter(ev => ev instanceof NavigationEnd),
       map((e: NavigationEnd) => {
-        const arr = e.url.split('/');
+        return e.url;
+        // const arr = e.url.split('/');
         // console.log(arr);
-        return arr.length > 1 ? arr[1] : 'home';
+        // return arr.length > 1 ? arr[1] : 'home';
       }),
     );
     // 这个只有切换路由后起作用

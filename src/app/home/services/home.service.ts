@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { topMenu, Channel } from 'src/app/share/components';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.prod';
+import { Product, Ad } from 'src/app/share/domain';
 
 // 依赖注入，让彼此耦合性降低
 @Injectable({
@@ -191,6 +192,17 @@ export class HomeService {
       // 查询参数
       params: {token: 'test'}
     });
+  }
+  getAdByTab(tab: string) {
+    console.log(tab, 'tab');
+
+    return this.http.get<Ad[]>(`${environment.baseUrl}/ads_categories_like=${tab}.json`, {
+      params: {token: 'test'}
+    });
+  }
+  getProduct(tab) {
+    console.log('获取商品');
+    return this.http.get<Product[]>(`${environment.baseUrl}/products_categories_like=${tab}.json`);
   }
   // 将private http: HttpClient手动注入
   constructor(private http: HttpClient) { }
