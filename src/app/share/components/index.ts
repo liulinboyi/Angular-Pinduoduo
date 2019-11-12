@@ -11,3 +11,6 @@ export * from './footer';
 export * from './product-card';
 export * from './vertical-grid';
 export * from './toast-info';
+export * from './product-tile';
+export * from './back-button';
+

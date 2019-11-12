@@ -9,7 +9,9 @@ import {
   FooterComponent,
   ProductCardComponent,
   VerticalGridComponent,
-  ToastInfoComponent} from './components';
+  ToastInfoComponent,
+  ProductTileComponent,
+  BackButtonComponent} from './components';
 import { GridItemDirective, GridItemImageDirective, GridTitleDirective, TagDirective, AvatarDirective } from './directives';
 import { AgoPipe } from './pipes';
 
@@ -32,6 +34,8 @@ import { AgoPipe } from './pipes';
     TagDirective,
     AvatarDirective,
     ToastInfoComponent,
+    ProductTileComponent,
+    BackButtonComponent,
   ],
   imports: [
     CommonModule,
@@ -53,7 +57,9 @@ import { AgoPipe } from './pipes';
     VerticalGridComponent,
     TagDirective,
     AvatarDirective,
-    ToastInfoComponent
+    ToastInfoComponent,
+    ProductTileComponent,
+    BackButtonComponent
   ]
 })
 export class ShareModule { }

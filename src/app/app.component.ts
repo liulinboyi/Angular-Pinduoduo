@@ -11,6 +11,7 @@ import { map, filter, tap } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   selectedIndex$: Observable<number>;
+  path$: Observable<string>;
   handleTabSelected(tab: TabItem) {
     this.router.navigate([tab.link]);
   }
@@ -31,6 +32,10 @@ export class AppComponent implements OnInit {
       }),
       map(path => this.getSelectedIndex(path))
     );
+    this.path$ = this.router.events.pipe(filter(ev => ev instanceof NavigationEnd), map((e: NavigationEnd) => {
+      const arr = e.url.split('/');
+      return arr[1];
+    }));
   }
 
 }

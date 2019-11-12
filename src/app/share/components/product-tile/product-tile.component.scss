@@ -1,0 +1,98 @@
+:host {
+  padding: 0 0.5rem;
+  background-color: #fff;
+}
+.container {
+  // display: grid;
+  // grid-template-columns: 10rem 1fr;
+  // grid-template-rows: 3rem 1fr 1rem 2rem;
+  // // grid-template-rows: ;
+  // grid-gap: 5px;
+  // grid-template-areas: 
+  // 'iamge title' 
+  // 'image .' 
+  // 'image tags' 
+  // 'image price';
+  // place-content: stretch;
+  // place-items: stretch;
+
+  display: grid;
+    // grid-template-columns: 9.6rem 1fr;
+    // grid-template-rows: 3rem 1fr 1rem 2rem;
+    grid-auto-flow: row;
+    grid-template-rows: repeat(auto-fill, minmax(11rem, 1fr));
+    grid-gap: .3rem;
+    // grid-template-areas:
+    //     'image title'
+    //     'image .'
+    //     'image tags'
+    //     'image price';
+    place-content: stretch;
+    place-items: start;
+}
+
+.product-image {
+  // grid-area: image;
+  object-fit: cover;
+  width: 11rem;
+  height: 11rem;
+}
+.product-title {
+  // grid-area: title;
+  width: 100%;
+  font-size: 0.8rem;
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.product-tags {
+  // grid-area: tags;
+  span {
+    margin-right: 5px;
+  }
+}
+.product-price {
+
+  display: grid;
+    width: 100%;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3,auto-fill);
+    place-items: center;
+
+  // width: 100%;
+  // // grid-area: price;
+  // display: grid;
+  // grid-gap: .2rem;
+  // // grid-template-columns: 25% 50% 25%;
+  // grid-template-columns: repeat(3, auto);
+  // // grid-template-areas: 'price-detail price-desc price-avatar';
+  // place-content: stretch;
+  // place-items: center;
+  .price-section {
+    // grid-area: price-detail;
+    color: #d24749;
+    // margin: 0 1rem;
+    // width: 100%;
+  }
+  .price-desc {
+    // grid-area: price-desc;
+    color: #3f3f3f;
+    font-size: 0.7rem;
+    width: 100%;
+  }
+  // .price-avatar {
+  //   grid-area: price-avatar;
+  //   margin: 0;
+  //   // height: 100%;
+  //   // width: 100%;
+  // }
+}
+.price {
+  display: inline;
+  font-size: 0.9rem;
+  padding: 0;
+}
+// .price-avatar img {
+//   position: relative;
+// }

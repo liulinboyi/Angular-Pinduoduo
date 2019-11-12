@@ -19,7 +19,12 @@
   <div>world</div> -->
   <!-- {{ slelctedTabLink$ | async | json }}
   {{ products$ | async | json }} -->
-    <app-product-card [product]="item" *ngFor="let item of products$ | async"></app-product-card>
+    <app-product-card 
+    [product]="item" 
+    *ngFor="let item of products$ | async"
+    [routerLink]="['/products', item.id]"
+    routerLinkActive="router-link-active"
+    ></app-product-card>
 </app-vertical-grid>
 <app-toast-info *ngIf="show"></app-toast-info>
 

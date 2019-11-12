@@ -1,19 +1,17 @@
 <div class="container">
   <img class="product-image" [src]="product.imageUrl" alt="">
+  <!-- <div class="product-title">{{product.title | slice: 0: 13}}</div> -->
   <div class="product-title">{{product.title}}</div>
+
   <div class="product-tags">
     <span appTag *ngFor="let tags of product.tags">{{tags}}</span>
   </div>
   <div class="product-price">
     <span class="price-section">
-      <b>&yen;</b>
-      <div class="price">{{product.price}}</div>
+      <!-- <b>&yen;</b> -->
+      <div class="price">{{product.price | currency: 'CNY'}}</div>
     </span>
     <span class="price-desc">{{ product.priceDesc }}</span>
-    <span class="price-avatar"><img 
-    *ngFor="let avatar of product.buyerAvatars;let idx = index" 
-    appAvatar 
-    [ngStyle]="{left: -idx * 10 + 'px', 'z-index':1000 - idx}"
-    [src]="avatar" alt="" /></span>
+    <span class="price-more">发现</span>
   </div>
 </div>

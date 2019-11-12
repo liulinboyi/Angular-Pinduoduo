@@ -14,6 +14,7 @@ import { RecommendModule } from './recommend';
 import { CategoryModule } from './category';
 import { ChatModule } from './chat';
 import { MyModule } from './my';
+import { ProductModule } from './product/product.module';
 @NgModule({
   // 自己的组件声明，让组件相互认识
   // 包含组件，指令，管道
@@ -32,7 +33,8 @@ import { MyModule } from './my';
     RecommendModule,
     CategoryModule,
     ChatModule,
-    MyModule
+    MyModule,
+    ProductModule
   ],
   // 导出的，可以是模块，指令，服务
   exports: [
