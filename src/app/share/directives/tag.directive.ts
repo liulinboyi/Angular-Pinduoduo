@@ -10,6 +10,7 @@ export class TagDirective {
   @Input() @HostBinding('style.color') tapColor = '#ca516a';
   @Input() @HostBinding('style.font-size') tapSize = '0.8rem';
   @Input() @HostBinding('style.padding') tapPadding = '3px';
+  @Input() @HostBinding('style.border-radius') tagRadius = '0';
 
   constructor() { }
 

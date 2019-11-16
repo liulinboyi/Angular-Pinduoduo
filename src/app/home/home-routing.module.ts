@@ -8,6 +8,9 @@ const routes: Routes = [
     // 路由
     path: 'home',
     component: HomeContainerComponent,
+    data: {
+      reuse: true
+    },
     children: [
       {
         path: '',
@@ -18,14 +21,17 @@ const routes: Routes = [
       // 路由参数
       path: ':tabLink',
       component: HomeDetailComponent,
-      children: [{
-        path: 'grand',
-        component: HomeGrandComponent
-      }, {
-        path: 'aux',
-        component: HomeAuxComponent,
-        outlet: 'second'
-      }]
+      data: {
+        reuse: true
+      },
+      // children: [{
+      //   path: 'grand',
+      //   component: HomeGrandComponent
+      // }, {
+      //   path: 'aux',
+      //   component: HomeAuxComponent,
+      //   outlet: 'second'
+      // }]
       }
   ]
   }, {

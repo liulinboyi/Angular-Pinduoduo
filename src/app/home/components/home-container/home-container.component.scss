@@ -3,11 +3,20 @@
   flex-direction: column;
   align-items: stretch;
   flex: 1;
+  overflow-y: auto;
 }
 .main{
+  // flex-grow: 1;
+  // overflow-y: auto;
+  // overflow-x: hidden;
+  // scroll-behavior: smooth;
+  // height: calc(100% - 3rem);
   flex-grow: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  // scroll-behavior: smooth;
+  // 上面的样式加上后，会出现加载页面后，滚动到上个路由的滚动条位置
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
   height: calc(100% - 3rem);
 }

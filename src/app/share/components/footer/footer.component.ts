@@ -1,5 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit, Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  NgZone, AfterViewInit,
+  AfterViewChecked } from '@angular/core';
 import { TabItem } from '../../domain';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +16,7 @@ import { TabItem } from '../../domain';
   // 笨组件
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, AfterViewInit, AfterViewChecked {
   tabItems: TabItem[] = [
     {
       title: '首页',
@@ -42,14 +50,35 @@ export class FooterComponent implements OnInit {
     }
   ];
   @Input() selectedIndex = 0;
+  @Input() selectedIndex$;
   @Output() tabSelected = new EventEmitter();
-  constructor() { }
+  constructor(private ngzone: NgZone) { }
 
   ngOnInit() {
+
+  }
+  ngAfterViewInit() {
+    this.selectedIndex$.subscribe(
+      (e) => {
+        console.log(e);
+        document.title =  this.tabItems[e].title;
+      }
+    );
+    // this.ngzone.run(() => {
+    //   console.log(document.title);
+
+    // });
+
+  }
+  ngAfterViewChecked() {
+
   }
   toggleSelected(idx: number) {
     this.selectedIndex = idx;
     this.tabSelected.emit(this.tabItems[idx]);
+    this.ngzone.run(() => {
+      document.title = this.tabItems[idx].title;
+    });
   }
 
 }

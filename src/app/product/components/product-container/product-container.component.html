@@ -1,1 +1,71 @@
 <app-back-button></app-back-button>
+<ng-container *ngIf="variants$ | async as variants">
+  <div class="wrapper">
+      <app-image-slider
+      [sliders]="variants[selectedIndex].productVariantImages"
+      [scrollHeight]="'22rem'"
+      [intervalInms]="0"
+      >
+        
+      </app-image-slider>
+      <div class="price-section">
+        <div class="now-price">
+          {{variants[selectedIndex].price | currency: 'CNY' }}
+        </div>
+        <div class="listPrice">
+            {{variants[selectedIndex].listPrice | currency: 'CNY' }}
+        </div>
+        <div class="sales-count">
+            {{variants[selectedIndex].product.priceDesc}}
+        </div>
+        <div class="title">
+            {{variants[selectedIndex].name}}
+        </div>
+        <div class="coupon">
+          <span 
+          appTag 
+          [tapPadding]="'2px 10px'"
+          [tagRadius]="'5px'" 
+          [tapBgColor]="'#e02f29'" 
+          [tapColor]="'#fff'" 
+          [tapSize]="'1rem'">返现</span>
+          <span>店铺内满39元减2元</span>
+        </div>
+        <div class="guarantee">
+          <span>全场包邮</span>
+          <span>.</span>
+          <span>7天退换</span>
+          <span>.</span>
+          <span>48小时发货</span>
+          <span>.</span>
+          <span>假一赔十</span>
+        </div>
+      </div>
+      <app-group-short-list class="group-short-list"></app-group-short-list>
+  </div>
+
+  <div class="toolbar">
+      <div class="icon-button">
+        <img src="/assets/icons/more.png" alt="" />
+        <div>更多</div>
+      </div>
+      <div class="icon-button">
+        <img src="/assets/icons/favorite.png" alt="" />
+        <div>收藏</div>
+      </div>
+      <div class="icon-button">
+        <img src="/assets/icons/customer-service.png" alt="" />
+        <div>客服</div>
+      </div>
+      <div class="direct-buy" (click)="handleDirectBuy(variants)">
+        <div>
+          {{ variants[selectedIndex].listPrice | currency: 'CNY' }}
+        </div>
+        <div>直接购买</div>
+      </div>
+      <div class="group-buy" (click)="handleGroupBuy(variants)">
+        <div>{{ variants[selectedIndex].price | currency: 'CNY' }}</div>
+        <div>发起拼单</div>
+      </div>
+  </div>
+</ng-container>

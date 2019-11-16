@@ -26,7 +26,7 @@ export class CountDownComponent implements OnInit {
     // takeWhile 如果gap >= 0 条件为true则继续，如果为false则停止订阅，这个流结束。filter只是过滤不会结束流。
     takeWhile(gap => gap >= 0),
     // 打印，调试
-    tap(val => console.log(val) ),
+    // tap(val => console.log(val) ),
     map(item => ({
         day: Math.floor(item / 3600 / 24),
         hour: Math.floor((item / 3600) % 24),

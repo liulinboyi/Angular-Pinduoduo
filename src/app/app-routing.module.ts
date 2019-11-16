@@ -12,7 +12,10 @@ const routes: Routes = [
 
 @NgModule({
   // 路由事件enableTracing： true
-  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
+  imports: [RouterModule.forRoot(routes, {
+    enableTracing: true,
+    scrollPositionRestoration: 'disabled',
+    anchorScrolling: 'enabled', })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

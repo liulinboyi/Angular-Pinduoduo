@@ -9,6 +9,9 @@ const routes: Routes = [
     children: [
       {
         path: ':productId',
+        data: {
+          reuse: true
+        },
         component: ProductContainerComponent
       }
     ]

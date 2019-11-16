@@ -181,14 +181,14 @@ export class HomeService {
   getTabs() {
     // <topMenu[]> 泛型，普遍存在的类型
     return this.http
-    .get<topMenu[]>(`${environment.baseUrl}/tab.json`, {
+    .get<topMenu[]>(`${environment.baseUrl}/tab`, {
       // 查询参数
       params: {token: 'test'}
     });
   }
   getChannels() {
     return this.http
-    .get<Channel[]>(`${environment.baseUrl}/channels.json`, {
+    .get<Channel[]>(`${environment.baseUrl}/channels`, {
       // 查询参数
       params: {token: 'test'}
     });
@@ -196,13 +196,20 @@ export class HomeService {
   getAdByTab(tab: string) {
     console.log(tab, 'tab');
 
-    return this.http.get<Ad[]>(`${environment.baseUrl}/ads_categories_like=${tab}.json`, {
-      params: {token: 'test'}
+    return this.http.get<Ad[]>(`${environment.baseUrl}/ads`, {
+      params: {
+        token: 'test',
+        categories_like: tab
+      }
     });
   }
   getProduct(tab) {
     console.log('获取商品');
-    return this.http.get<Product[]>(`${environment.baseUrl}/products_categories_like=${tab}.json`);
+    return this.http.get<Product[]>(`${environment.baseUrl}/products`, {
+      params: {
+        categories_like: tab
+      }
+    });
   }
   // 将private http: HttpClient手动注入
   constructor(private http: HttpClient) { }

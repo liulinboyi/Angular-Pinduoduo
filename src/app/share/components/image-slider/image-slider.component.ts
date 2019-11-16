@@ -43,6 +43,9 @@ export class ImageSliderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   // 安全获取，组件引用
   ngAfterViewInit(): void {
+    if (this.intervalInms <= 0) {
+      return;
+    }
     const i = 0;
     this.intavelId = setInterval(() => {
       // 设置属性

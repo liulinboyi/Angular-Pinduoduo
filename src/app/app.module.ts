@@ -8,13 +8,19 @@ import { ShareModule } from './share/share.module';
 import { HomeModule, ParamInterceptor, NotificationInterceptor } from './home';
 
 import localZh from '@angular/common/locales/zh-Hans';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, ViewportScroller } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RecommendModule } from './recommend';
 import { CategoryModule } from './category';
 import { ChatModule } from './chat';
 import { MyModule } from './my';
 import { ProductModule } from './product/product.module';
+import { Router, Scroll, RouteReuseStrategy } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { CustomReuseStrategy } from './share/CustomReuseStrategy';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 @NgModule({
   // 自己的组件声明，让组件相互认识
   // 包含组件，指令，管道
@@ -25,6 +31,7 @@ import { ProductModule } from './product/product.module';
   // 使用的模块，第三方模块
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ShareModule,
@@ -55,13 +62,33 @@ import { ProductModule } from './product/product.module';
       provide: HTTP_INTERCEPTORS,
       useClass: NotificationInterceptor,
       multi: true
+    },
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomReuseStrategy
     }
   ],
   // 根模块，才有
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() {
+  constructor(router: Router, viewportScroller: ViewportScroller) {
     registerLocaleData(localZh, 'zh');
+    // router.events.pipe(
+    //   filter((e) => e instanceof Scroll)
+    // ).subscribe((e: Scroll) => {
+    //   console.log(e, 'scroll');
+
+    //   if (e.position) {
+    //     // backward navigation
+    //     viewportScroller.scrollToPosition(e.position);
+    //   } else if (e.anchor) {
+    //     // anchor navigation
+    //     viewportScroller.scrollToAnchor(e.anchor);
+    //   } else {
+    //     // forward navigation
+    //     viewportScroller.scrollToPosition([0, 0]);
+    //   }
+    // });
   }
 }

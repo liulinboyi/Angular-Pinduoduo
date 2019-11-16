@@ -1,10 +1,20 @@
-import { Component, OnInit, ViewChild, Inject, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  Inject,
+  ChangeDetectionStrategy,
+  ElementRef,
+  AfterViewChecked,
+  ChangeDetectorRef,
+  AfterViewInit} from '@angular/core';
 import { topMenu } from 'src/app/share/components';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute, Scroll } from '@angular/router';
 import { HomeService } from '../../services';
 import { token } from '../home-grand';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-home-container',
@@ -12,13 +22,16 @@ import { filter, map, tap } from 'rxjs/operators';
   styleUrls: ['./home-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeContainerComponent implements OnInit {
+export class HomeContainerComponent implements OnInit, AfterViewChecked, AfterViewInit {
   selectedTabLink$: Observable<string>;
   url$: Observable<string>;
+  @ViewChild('container', {static: true}) private containerRef: ElementRef<HTMLDivElement>;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private service: HomeService,
+    private cd: ChangeDetectorRef,
+    private viewportScroller: ViewportScroller,
     @Inject(token) private baseUrl: string) {
       // 这里不生效
       // router.events.pipe(
@@ -42,6 +55,8 @@ export class HomeContainerComponent implements OnInit {
     'rgba(0,0,0,0.4)',
     'rgba(0,0,0,0.5)'
   ];
+  private retrieveData;
+  scrollRoute;
   handleTabSelected(curTab) {
     console.log(curTab);
     this.router.navigate(['home', curTab.link]);
@@ -67,11 +82,49 @@ export class HomeContainerComponent implements OnInit {
       }),
     );
     // 这个只有切换路由后起作用
-    this.router.events.subscribe(e => {
+    this.router.events.pipe(filter(ev => ev instanceof Scroll)).subscribe(e => {
+      console.log(e);
+      this.scrollRoute = e;
     });
     // this.menus = this.service.getTabs();
     this.menus$ = this.service.getTabs();
 
+  }
+
+  scroll() {
+    console.log('滚动');
+
+  }
+
+  get scrollTop(): number {
+    return this.containerRef && this.containerRef.nativeElement.scrollTop;
+  }
+
+  set scrollTop(value: number) {
+    if (this.containerRef) {
+      this.containerRef.nativeElement.scrollTop = value;
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.retrieveData) {
+      this.scrollTop = this.retrieveData;
+      // this.scrollRoute.position = [0, this.retrieveData];
+      // this.viewportScroller.setOffset([0, this.retrieveData]);
+      this.retrieveData = null;
+      this.cd.detectChanges();
+    }
+  }
+  ngAfterViewInit() {
+
+  }
+
+  retrieve(value: number) {
+    this.retrieveData = value;
+  }
+
+  store(): number {
+    return this.scrollTop;
   }
 
 }

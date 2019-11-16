@@ -7,6 +7,7 @@
 >
 <!-- <div>hello 嵌套投影</div> -->
 </app-scroll-tap>
-<div class="main">
+{{scrollTop}}
+<div #container class="main" (scroll)="scroll()">
     <router-outlet></router-outlet>
 </div>
