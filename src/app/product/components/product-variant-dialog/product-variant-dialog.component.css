@@ -1,0 +1,81 @@
+.close-button {
+  position: fixed;
+  left: calc(100% - 2rem);
+  margin-top: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+.image-container {
+  flex-shrink: 0;
+  height: calc(9rem - 10%);
+}
+.product-image {
+  position: absolute;
+  top: -5%;
+  left: 5%;
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #fff;
+}
+.price {
+  position: relative;
+  font-size: 1.3rem;
+  color: #e02f29;
+  text-align: start;
+  left: calc(5% + 9rem);
+}
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem;
+}
+.variant {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+.variant > div {
+  background-color: #f5f5f5;
+  margin-right: 0.5rem;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+.buttons {
+  display: flex;
+}
+.confirm-button {
+  width: 100%;
+  background-color: #e02f29;
+  color: #fff;
+  font-size: 1.3rem;
+  height: 100%;
+  padding: .5rem 0;
+}
+.variant .variant-selected {
+  color: #fff;
+  background-color: #e02f29;
+}
+.selected-desc {
+  position: relative;
+  left: calc(5% + 9rem);
+  text-align: start;
+  width: calc(95% - 10rem);
+}
+button {
+  border-style: none;
+}
+app-product-amount {
+  width: 100%;
+  margin: 0.5rem 0;
+}

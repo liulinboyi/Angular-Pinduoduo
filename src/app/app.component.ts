@@ -4,6 +4,7 @@ import { TabItem } from './share/domain';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { map, filter, tap } from 'rxjs/operators';
 import { slideInAnimation } from './animations';
+import { DialogService } from './dialog';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,10 @@ export class AppComponent implements OnInit {
     // tslint:disable-next-line:no-string-literal
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private dialogService: DialogService
+    ) {
 
   }
   ngOnInit(): void {
@@ -45,6 +49,10 @@ export class AppComponent implements OnInit {
       const arr = e.url.split('/');
       return arr[1];
     }));
+  }
+
+  removeDialog() {
+    this.dialogService.close();
   }
 
 }

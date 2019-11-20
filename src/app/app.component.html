@@ -3,3 +3,7 @@
 <!-- </div> -->
 <!-- selectedIndex数据从路由来，路由是一个流 -->
 <app-footer [ngStyle]="{'display': (path$ | async) !== 'products' ? '' : 'none'}" [selectedIndex]="selectedIndex$ | async" [selectedIndex$]="selectedIndex$" (tabSelected)="handleTabSelected($event)"></app-footer>
+<div id="overlay" class="hidden" (click)="removeDialog()">
+
+</div>
+<div id="dialog-container" class="hidden"></div>

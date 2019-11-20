@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  width: 100%;
+}
+.button {
+  background-color: lightgray;
+  img {
+    object-fit: contain;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+.count {
+  margin: 0 0.5rem;
+  width: 2rem;
+  text-align: center;
+}
+.right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
