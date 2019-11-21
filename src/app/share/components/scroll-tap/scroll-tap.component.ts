@@ -42,14 +42,14 @@ OnDestroy {
 
   }
   @Input() selectedTabLink: string;
-  @Input() menus;
+  @Input() menus = [];
   @Input() backGroundColor = '#FFF';
   @Input() titleActiveColor = 'red';
   @Input() titleColor = '#000';
   @Input() indicalorColor = 'red';
   // 事件发射器 EventEmitter 这个经常倒入错误，应该在angular/core 中导入
   @Output() tabSelected = new EventEmitter();
-
+  item;
   title = 'angular-pinduoduo';
   selectedIndex = -1;
   // 在输入注解，修饰符后面的值改变后调用

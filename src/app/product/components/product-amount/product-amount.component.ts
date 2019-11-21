@@ -7,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ProductAmountComponent implements OnInit {
 
-  @Input() count = 0;
+  @Input() count = 1;
   @Output() amountChange = new EventEmitter<number>();
   constructor() { }
 

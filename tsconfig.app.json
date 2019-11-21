@@ -14,5 +14,9 @@
   "exclude": [
     "src/test.ts",
     "src/**/*.spec.ts"
-  ]
+  ],
+  "angularComplierOptions": {
+    "enableIvy": true,
+    "allowEmptyCodegenFiles": true
+  }
 }

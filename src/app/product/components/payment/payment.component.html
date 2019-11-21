@@ -1,0 +1,16 @@
+<div class="container">
+  <div *ngFor="let payment of payments" (click)="handleSelection(payment)">
+    <img [src]="payment.icon" alt="" />
+    <span class="payment-name"
+      >{{ payment.name
+      }}<span class="payment-desc" *ngIf="payment.desc"
+        >({{ payment.desc }})</span
+      ></span
+    >
+    <img
+      src="assets/icons/selected.png"
+      alt=""
+      *ngIf="selectedId === payment.id"
+    />
+  </div>
+</div>

@@ -15,6 +15,7 @@ export interface imageSlider {
   imageUrl: string;
   link: string;
   caption: string;
+  imgUrl?: string;
 }
 
 @Component({

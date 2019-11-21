@@ -40,7 +40,11 @@ export class ProductContainerComponent implements OnInit {
   handleGroupBuy(variants: ProductVariant) {
     const top = 40;
 
+    // 7-9
     // 传入 Output，EventEmitter 其实就是一个 Subject
+    // Subject即是Observable 也是 Observer
+    // Subject既可以 subscribe 也可以 next(xxx)
+    // Behavior是Subject的一种特殊形式, 可以记住最新的值。
     const formSubmitted = new EventEmitter();
     this.subs.push(
           formSubmitted.subscribe(ev => {
@@ -61,7 +65,10 @@ export class ProductContainerComponent implements OnInit {
         variants,
         selectedVariantIndex: this.selectedIndex
       },
-      outputs: {},
+      outputs: {
+        selected,
+        formSubmitted
+      },
       position: {
         top: `${top}%`,
         left: '0',
