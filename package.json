@@ -1,5 +1,5 @@
 {
-  "name": "angular-pinduoduo",
+  "name": "project-angular-pinduoduo",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -13,7 +13,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "next",
-    "@angular/common": "next",
+    "@angular/common": "^9.0.0-rc.3",
     "@angular/compiler": "next",
     "@angular/core": "next",
     "@angular/forms": "next",

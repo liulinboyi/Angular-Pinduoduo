@@ -16,6 +16,13 @@ export class ConfirmOrderComponent implements OnInit {
   count$ = new Subject<number>();
   totalPrice$: Observable<number>;
   payments: Payment[];
+  unitPrice$: Observable<number>;
+  amount$: Observable<number>;
+  mergedCount$: Observable<number>;
+
+  unitPrice: number;
+  amount: number;
+  totalPrice: number;
   constructor(private dialogService: DialogService) {}
 
   ngOnInit() {
@@ -38,25 +45,19 @@ export class ConfirmOrderComponent implements OnInit {
       }
     ];
     this.item$ = this.dialogService.getDate().pipe(
-      tap(val => console.log(val)),
+      tap((val: { variant: ProductVariant; count: number }) => {
+        this.unitPrice = val.variant.price;
+        this.amount = val.count;
+        this.totalPrice = this.unitPrice * this.amount;
+        console.log(val);
+      }),
       share()
-    );
-    const unitPrice$ = this.item$.pipe(
-      map(
-        (item: { variant: ProductVariant; count: number }) => item.variant.price
-      )
-    );
-    const amount$ = this.item$.pipe(
-      map((item: { variant: ProductVariant; count: number }) => item.count)
-    );
-    const mergedCount$ = merge(amount$, this.count$);
-    this.totalPrice$ = combineLatest([unitPrice$, mergedCount$]).pipe(
-      map(([price, amount]) => price * amount)
     );
   }
 
   handleAmountChange(count: number) {
     this.count$.next(count);
+    this.totalPrice = this.unitPrice * count;
   }
 
   handlePay() {}

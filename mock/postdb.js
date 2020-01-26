@@ -1075,6 +1075,14 @@
           ]
         }
       }
-    ]
+    ],
+    profile: {
+      "name": "张三",
+      "avatar": "assets/avatars/avatar001.png",
+      "gender": 1,
+      "address": "北京市朝阳区xxx路xxx号1-1-1",
+      "birthday": "1990-03-12",
+      "username": "zhangsan"
+    }
 }
     // 通过访问： http:localhost:9999/api/getSide, 即可获取到数据。

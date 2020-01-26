@@ -1,0 +1,124 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5rem 0;
+  overflow-y: auto;
+}
+.container .my-info {
+  padding: 0 0.5rem;
+  display: grid;
+  grid-template-areas:
+    'avatar name cashback'
+    'avatar badge membership';
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 0.5rem;
+  place-items: center start;
+}
+.my-info .my-avatar {
+  grid-area: avatar;
+}
+.my-info .my-name {
+  grid-area: name;
+  font-size: 1.3rem;
+  font-weight: 500;
+  align-self: end;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.my-info .my-cashback {
+  grid-area: cashback;
+  align-self: end;
+}
+.my-info span {
+  border: 1px solid darkgray;
+  border-radius: 1rem;
+  padding: 0.2rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.my-info .my-badge {
+  grid-area: badge;
+  font-weight: 300;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.my-info .my-membership {
+  grid-area: membership;
+}
+.my-info img {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
+  margin: 0 0.5rem;
+}
+.my-badge img {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  margin: 0 0.2rem;
+}
+.container .brand {
+  background-color: #47425a;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.brand .title {
+  color: #fee2c0;
+  font-size: 1.1rem;
+  flex: 1;
+}
+.brand .detail {
+  background-color: #fee2c0;
+  font-size: 0.8rem;
+  color: #47425a;
+  border-radius: 1rem;
+  padding: 0.2rem 0.5rem;
+}
+.brand img {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+}
+.container .order-status {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.order-status .title {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.order-status .title span {
+  font-weight: 300;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.order-status .title img {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+}
+.container .tools {
+  background-color: #f5f5f5;
+  padding: 0.5rem 0;
+}

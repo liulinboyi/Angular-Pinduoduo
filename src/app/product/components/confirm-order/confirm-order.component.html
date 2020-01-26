@@ -8,7 +8,7 @@
       <img src="assets/icons/location.png" alt="" class="location" />
       <div class="name-and-mobile">
         <span class="name">
-          张三
+          张三{{unitPrice$ | async}}
         </span>
         <span class="mobile">
           13888888888
@@ -53,9 +53,10 @@
   <div class="toolbar">
     <div class="total-price">
       <span>实付款：</span>
-      <span class="price-section">{{
-        totalPrice$ | async | currency: 'CNY'
-      }}</span>
+      <span class="price-section">
+        <!-- {{totalPrice$ | async | currency: 'CNY'}} -->
+        {{totalPrice | currency: 'CNY'}}
+      </span>
       <span class="price-condition">&nbsp;免邮费</span>
     </div>
     <div class="pay" (click)="handlePay()">

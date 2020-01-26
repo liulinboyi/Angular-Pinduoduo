@@ -48,6 +48,8 @@ export class ProductContainerComponent implements OnInit {
     const formSubmitted = new EventEmitter();
     this.subs.push(
           formSubmitted.subscribe(ev => {
+            console.log(ev);
+
             this.dialogService.saveDate(ev);
             this.router.navigate(['/orders', 'confirm']);
           })

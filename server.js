@@ -40,6 +40,9 @@
   server.get("/api/channels",function(req,res){
     res.json(dbs.channels);
   });
+  server.get("/api/profile",function(req,res) {
+    res.json(dbs.profile);
+  })
 
   server.post("/postdata",function(req,res){
         res.send(dbs.postData);
