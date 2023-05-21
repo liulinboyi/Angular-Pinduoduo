@@ -1,27 +1,33 @@
 # AngularPinduoduo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.15.
+## clone to the local
+Clone the repo to local
 
-## Development server
+## ng version
+![ng](./image/Snipaste_2023-05-21_12-40-46.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## server
 
-## Code scaffolding
+```shell
+node server
+```
+The local server will open at the port 8082
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## front end
 
-## Build
+```shell
+yarn
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```shell
+yarn start
+```
 
-## Running unit tests
+```shell
+yarn build
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## demo play
 
-## Running end-to-end tests
+![](./image/Snipaste_2023-05-21_12-46-12.png)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
