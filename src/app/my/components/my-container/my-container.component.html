@@ -34,8 +34,8 @@
       </div>
       <app-horizontal-grid [displayCols]="5" [cols]="5">
         <span appGridItem *ngFor="let item of orderItems; let idx = index">
-          <img [appGridItemImage]="'2rem'" [src]="item.icon" />
-          <span [appGridItemTitle]="'0.8rem'" class="title">{{
+          <img appGridItemImage [appGridItemImageWidth]="'2rem'" [src]="item.icon" />
+          <span class="title">{{
             item.title
           }}</span>
         </span>
@@ -44,8 +44,8 @@
     <div class="tools">
       <app-horizontal-grid [displayCols]="5" [cols]="5">
         <span appGridItem *ngFor="let item of toolsItems; let idx = index">
-          <img [appGridItemImage]="'2rem'" [src]="item.icon" />
-          <span [appGridItemTitle]="'0.8rem'" class="title">{{
+          <img appGridItemImage [appGridItemImageWidth]="'2rem'" [src]="item.icon" />
+          <span class="title">{{
             item.title
           }}</span>
         </span>
